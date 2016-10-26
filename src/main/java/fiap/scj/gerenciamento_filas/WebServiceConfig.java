@@ -23,18 +23,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 
-	@Bean(name = "senhas")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema senhaSchema) {
+	@Bean(name = "gerenciamentoFilas")
+	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema gerenciamentoFilasSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("GerenciamentoFilasPort");
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://www.fiap.com.br/mba/scj/gerenciamento_filas");
-		wsdl11Definition.setSchema(senhaSchema);
+		wsdl11Definition.setSchema(gerenciamentoFilasSchema);
 		return wsdl11Definition;
 	}
 
 	@Bean
-	public XsdSchema senhaSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("senha.xsd"));
+	public XsdSchema gerenciamentoFilasSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("gerenciamentoFilas.xsd"));
 	}
 }
