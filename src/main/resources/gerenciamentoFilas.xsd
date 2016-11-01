@@ -62,5 +62,18 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="finalizarAtendimentoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idAtendimento" type="xs:integer" />
+				<xs:element name="dataInicio" type="xs:dateTime" />
+				<xs:element name="dataFim" type="xs:dateTime" />
+				<xs:element name="servico" type="xs:string" />
+				<xs:element name="avaliacao" type="xs:string" />
+				<xs:element name="nomeCidadao" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>

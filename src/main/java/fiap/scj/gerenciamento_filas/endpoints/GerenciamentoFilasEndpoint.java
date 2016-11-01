@@ -1,8 +1,13 @@
 package fiap.scj.gerenciamento_filas.endpoints;
 
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.inject.Inject;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -10,6 +15,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import br.com.fiap.mba.scj.gerenciamento_filas.FinalizarAtendimentoRequest;
+import br.com.fiap.mba.scj.gerenciamento_filas.FinalizarAtendimentoResponse;
 import br.com.fiap.mba.scj.gerenciamento_filas.GerarSenhaRequest;
 import br.com.fiap.mba.scj.gerenciamento_filas.GerarSenhaResponse;
 import br.com.fiap.mba.scj.gerenciamento_filas.IniciarAtendimentoRequest;
@@ -17,6 +23,7 @@ import br.com.fiap.mba.scj.gerenciamento_filas.IniciarAtendimentoResponse;
 import br.com.fiap.mba.scj.gerenciamento_filas.ProximaSenhaRequest;
 import br.com.fiap.mba.scj.gerenciamento_filas.ProximaSenhaResponse;
 import fiap.scj.gerenciamento_filas.repositorios.SenhasRepositorio;
+import fiap.scj.gerenciamento_filas.to.AtendimentoTO;
 import fiap.scj.gerenciamento_filas.to.SenhaTO;
 
 @Endpoint
@@ -55,9 +62,29 @@ public class GerenciamentoFilasEndpoint {
 	}
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "finalizarAtendimentoRequest")
-	public void finalizarAtendimento(@RequestPayload FinalizarAtendimentoRequest request) throws Exception {
-		senhasRepositorio.finalizarAtendimento(request.getIdAtendimento().intValue(), request.getServico(),
+	@ResponsePayload
+	public FinalizarAtendimentoResponse finalizarAtendimento(@RequestPayload FinalizarAtendimentoRequest request) throws Exception {
+		FinalizarAtendimentoResponse response = new FinalizarAtendimentoResponse();		
+		AtendimentoTO to = senhasRepositorio.finalizarAtendimento(request.getIdAtendimento().intValue(), request.getServico(),
 				request.getAvaliacao());
+		response.setIdAtendimento(BigInteger.valueOf(to.getIdentificador()));
+		response.setDataInicio(dateToXMLGregorianCalendar(to.getDataInicio()));
+		response.setDataFim(dateToXMLGregorianCalendar(to.getDataFim()));
+		response.setServico(to.getServico());
+		response.setAvaliacao(to.getAvaliacao());	
+		response.setNomeCidadao(to.getNomeCidadao());
+		return response;
+	}
+	
+	private XMLGregorianCalendar dateToXMLGregorianCalendar(Date data) {
+		GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+		gc.setTime(data);
+		try {
+			return DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
+		} catch (DatatypeConfigurationException e) {
+			System.err.println(e);
+			return null;
+		}
 	}
 
 }

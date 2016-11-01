@@ -94,7 +94,7 @@ public class SenhasRepositorio {
 		return null;
 	}
 
-	public void finalizarAtendimento(Integer idAtendimento, String servico, String avaliacao) throws WebFaultException {
+	public AtendimentoTO finalizarAtendimento(Integer idAtendimento, String servico, String avaliacao) throws WebFaultException {
 		AtendimentoTO to = procurarAtendimentoPorId(idAtendimento);
 		if (to == null) {
 			throw new WebFaultException("Atendimento não encontrado");
@@ -110,6 +110,7 @@ public class SenhasRepositorio {
 		}
 		
 		System.out.println("Fim do atendimento " + to);
+		return to;
 	}
 
 	private AtendimentoTO procurarAtendimentoPorId(Integer idAtendimento) {
