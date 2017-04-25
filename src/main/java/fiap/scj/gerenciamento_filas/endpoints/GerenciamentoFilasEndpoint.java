@@ -73,6 +73,9 @@ public class GerenciamentoFilasEndpoint {
 		response.setServico(to.getServico());
 		response.setAvaliacao(to.getAvaliacao());	
 		response.setNomeCidadao(to.getNomeCidadao());
+		
+		System.out.println("Finalizar atendimento: "+ to.toString());
+		
 		return response;
 	}
 	
