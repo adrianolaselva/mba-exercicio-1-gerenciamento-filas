@@ -8,6 +8,7 @@
 
 package br.com.fiap.mba.scj.gerenciamento_filas;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,8 +26,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fila" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="nomeCidadao" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="idAtendimento" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="servico" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="avaliacao" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,63 +39,90 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fila",
-    "nomeCidadao"
+    "idAtendimento",
+    "servico",
+    "avaliacao"
 })
-@XmlRootElement(name = "gerarSenhaRequest")
-public class GerarSenhaRequest {
+@XmlRootElement(name = "finalizarAtendimentoRequest")
+public class FinalizarAtendimentoRequest {
 
     @XmlElement(required = true)
-    protected String fila;
+    protected BigInteger idAtendimento;
     @XmlElement(required = true)
-    protected String nomeCidadao;
+    protected String servico;
+    @XmlElement(required = true)
+    protected String avaliacao;
 
     /**
-     * Obtém o valor da propriedade fila.
+     * Obtém o valor da propriedade idAtendimento.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getIdAtendimento() {
+        return idAtendimento;
+    }
+
+    /**
+     * Define o valor da propriedade idAtendimento.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setIdAtendimento(BigInteger value) {
+        this.idAtendimento = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade servico.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFila() {
-        return fila;
+    public String getServico() {
+        return servico;
     }
 
     /**
-     * Define o valor da propriedade fila.
+     * Define o valor da propriedade servico.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFila(String value) {
-        this.fila = value;
+    public void setServico(String value) {
+        this.servico = value;
     }
 
     /**
-     * Obtém o valor da propriedade nomeCidadao.
+     * Obtém o valor da propriedade avaliacao.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNomeCidadao() {
-        return nomeCidadao;
+    public String getAvaliacao() {
+        return avaliacao;
     }
 
     /**
-     * Define o valor da propriedade nomeCidadao.
+     * Define o valor da propriedade avaliacao.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNomeCidadao(String value) {
-        this.nomeCidadao = value;
+    public void setAvaliacao(String value) {
+        this.avaliacao = value;
     }
 
 }

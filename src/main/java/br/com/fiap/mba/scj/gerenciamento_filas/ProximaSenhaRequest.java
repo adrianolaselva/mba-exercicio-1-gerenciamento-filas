@@ -8,6 +8,7 @@
 
 package br.com.fiap.mba.scj.gerenciamento_filas;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="fila" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="nomeCidadao" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="numeroPontoAtd" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,15 +39,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "fila",
-    "nomeCidadao"
+    "numeroPontoAtd"
 })
-@XmlRootElement(name = "gerarSenhaRequest")
-public class GerarSenhaRequest {
+@XmlRootElement(name = "proximaSenhaRequest")
+public class ProximaSenhaRequest {
 
     @XmlElement(required = true)
     protected String fila;
     @XmlElement(required = true)
-    protected String nomeCidadao;
+    protected BigInteger numeroPontoAtd;
 
     /**
      * Obtém o valor da propriedade fila.
@@ -73,27 +74,27 @@ public class GerarSenhaRequest {
     }
 
     /**
-     * Obtém o valor da propriedade nomeCidadao.
+     * Obtém o valor da propriedade numeroPontoAtd.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getNomeCidadao() {
-        return nomeCidadao;
+    public BigInteger getNumeroPontoAtd() {
+        return numeroPontoAtd;
     }
 
     /**
-     * Define o valor da propriedade nomeCidadao.
+     * Define o valor da propriedade numeroPontoAtd.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setNomeCidadao(String value) {
-        this.nomeCidadao = value;
+    public void setNumeroPontoAtd(BigInteger value) {
+        this.numeroPontoAtd = value;
     }
 
 }

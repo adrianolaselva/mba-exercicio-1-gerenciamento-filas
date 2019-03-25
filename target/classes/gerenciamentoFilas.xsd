@@ -1,0 +1,79 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fiap.com.br/mba/scj/gerenciamento_filas"
+	targetNamespace="http://www.fiap.com.br/mba/scj/gerenciamento_filas"
+	elementFormDefault="qualified">
+
+	<xs:element name="gerarSenhaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="fila" type="xs:string" />
+				<xs:element name="nomeCidadao" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="gerarSenhaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="proximaSenhaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="fila" type="xs:string" />
+				<xs:element name="numeroPontoAtd" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="proximaSenhaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="iniciarAtendimentoRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigoSenha" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="iniciarAtendimentoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="identificador" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="finalizarAtendimentoRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idAtendimento" type="xs:integer" />
+				<xs:element name="servico" type="xs:string" />
+				<xs:element name="avaliacao" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="finalizarAtendimentoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idAtendimento" type="xs:integer" />
+				<xs:element name="dataInicio" type="xs:dateTime" />
+				<xs:element name="dataFim" type="xs:dateTime" />
+				<xs:element name="servico" type="xs:string" />
+				<xs:element name="avaliacao" type="xs:string" />
+				<xs:element name="nomeCidadao" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

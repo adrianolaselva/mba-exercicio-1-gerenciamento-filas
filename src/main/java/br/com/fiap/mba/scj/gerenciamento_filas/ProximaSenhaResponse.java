@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fila" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="nomeCidadao" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,63 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fila",
-    "nomeCidadao"
+    "codigo"
 })
-@XmlRootElement(name = "gerarSenhaRequest")
-public class GerarSenhaRequest {
+@XmlRootElement(name = "proximaSenhaResponse")
+public class ProximaSenhaResponse {
 
     @XmlElement(required = true)
-    protected String fila;
-    @XmlElement(required = true)
-    protected String nomeCidadao;
+    protected String codigo;
 
     /**
-     * Obtém o valor da propriedade fila.
+     * Obtém o valor da propriedade codigo.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFila() {
-        return fila;
+    public String getCodigo() {
+        return codigo;
     }
 
     /**
-     * Define o valor da propriedade fila.
+     * Define o valor da propriedade codigo.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFila(String value) {
-        this.fila = value;
-    }
-
-    /**
-     * Obtém o valor da propriedade nomeCidadao.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNomeCidadao() {
-        return nomeCidadao;
-    }
-
-    /**
-     * Define o valor da propriedade nomeCidadao.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNomeCidadao(String value) {
-        this.nomeCidadao = value;
+    public void setCodigo(String value) {
+        this.codigo = value;
     }
 
 }
