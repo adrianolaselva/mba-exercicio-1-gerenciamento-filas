@@ -42,6 +42,7 @@ public class GerenciamentoFilasEndpoint {
 		return response;
 	}
 
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "proximaSenhaRequest")
 	@ResponsePayload
 	public ProximaSenhaResponse gerarSenha(@RequestPayload ProximaSenhaRequest request) throws Exception {

@@ -8,6 +8,7 @@
 			<xs:sequence>
 				<xs:element name="fila" type="xs:string" />
 				<xs:element name="nomeCidadao" type="xs:string" />
+				<xs:element name="email" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
